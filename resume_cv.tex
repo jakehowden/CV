@@ -1,0 +1,61 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\geometry{left=2cm, top=1.5cm, right=2cm, bottom=2cm, footskip=.5cm} 
+
+\fontdir[fonts/]
+
+\definecolor{awesome}{HTML}{2E5CB8} 
+
+% Colors for text - uncomment and modify
+\definecolor{darktext}{HTML}{414141}
+\definecolor{text}{HTML}{414141}
+\definecolor{graytext}{HTML}{414141}
+\definecolor{lighttext}{HTML}{414141}€
+
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+%----------------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+\name{Jake}{Howden}
+\address{Cardiff, South Wales}
+\mobile{07555621271}
+
+\email{jakehowden@gmail.com}
+\github{jakehowden}
+\linkedin{jake-howden}
+
+\position{Software Engineer{\enskip\cdotp\enskip}Cloud .NET Engineer}
+\quote{``A dedicated cloud.NET engineer with over 7 years of industry experience. I possess a track record of successfully developing, and deploying multiple microservices projects."} % A quote or statement
+
+\makecvfooter{\today}{Jake Howden~~~·~~~CV}{\thepage}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\makecvheader%
+
+%----------------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%----------------------------------------------------------------------------------------
+
+\input{cv-sections/skills.tex}
+\input{cv-sections/experience.tex}
+\clearpage
+\input{cv-sections/education.tex}
+\input{cv-sections/soft-skills.tex}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

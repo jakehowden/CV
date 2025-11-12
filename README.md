@@ -25,6 +25,4 @@ Or use your preferred LaTeX editor/IDE.
 
 ## Preview
 
-![CV Preview](resume_cv.pdf)
-
 You can view the latest version of my CV [here](resume_cv.pdf).

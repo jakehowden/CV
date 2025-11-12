@@ -31,5 +31,6 @@
       "name": "latexmk (xelatex)",
       "tools": ["latexmk-xelatex"]
     }
-  ]
+  ],
+  "cSpell.words": ["Standardised"]
 }

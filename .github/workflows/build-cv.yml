@@ -1,0 +1,48 @@
+name: Build CV
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - '**.tex'
+      - '**.cls'
+      - '**.sty'
+      - 'fonts/**'
+      - '.github/workflows/build-cv.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # full history for the SOURCE_DATE_EPOCH lookup below
+
+      - name: Compile with XeLaTeX
+        run: |
+          # Stamp the PDF with the last source commit's time so unchanged sources rebuild byte-identical
+          export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct -- '*.tex' '*.cls' '*.sty' fonts)
+          docker run --rm -v "$PWD:/work" -w /work -e SOURCE_DATE_EPOCH \
+            texlive/texlive:latest xelatex -interaction=nonstopmode resume_cv.tex
+
+      - name: Check warnings and page count
+        run: |
+          grep -E '^Overfull|Missing character' resume_cv.log | sed 's/^/::warning::/' || true
+          pages=$(grep -oP 'Output written on resume_cv\.pdf \(\K[0-9]+' resume_cv.log || true)
+          echo "resume_cv.pdf has ${pages:-no} page(s)"
+          [ "$pages" = 2 ] || { echo "::error::Expected 2 pages, got ${pages:-none}"; exit 1; }
+
+      - name: Commit PDF if it changed
+        run: |
+          if git diff --quiet -- resume_cv.pdf; then
+            echo "resume_cv.pdf is up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rebuild resume_cv.pdf" -- resume_cv.pdf
+          git push

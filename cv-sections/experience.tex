@@ -20,11 +20,12 @@
   {02/2026--Present} % Date
   {
     \begin{cvitems}
-      \item Collapsed a planned two-portal build into a single partner platform, then hosted the cross-functional session that phased the migration against a fixed legacy-retirement deadline.
-      \item Found a production cache credential committed in plaintext and reachable with no network restriction; scoped the blast radius and led remediation onto Azure Key Vault with a coordinated key rotation.
-      \item Consolidated the divergent build pipelines of 4 teams into a single templated CI repository, since adopted on platforms beyond the originating team.
-      \item Shipped an Architecture Decision Record collation tool (GitHub Pages fed by a build pipeline) now used across 15+ teams, presenting it to the Staff+ engineering forum to standardise the ADR format business-wide.
-      \item Led AI tooling adoption, onboarding 18 non-engineering staff to Claude Code across 3 sessions and writing the setup guide other engineering guilds reused.
+      \item Architected Partner Portal, a self-service platform for comparison partners: AKS behind Cloudflare, App Gateway WAF and Nginx, with event-driven messaging on Azure Event Hubs, split so test and live traffic never share a hub.
+      \item Proposed porting a legacy portal into Partner Portal rather than building a second one, won over four stakeholders one-to-one before the group decision, then hosted the session that phased the migration against a fixed retirement date.
+      \item Co-built a multi-agent AI orchestrator that turns an architecture diagram into running services, gated on PR merge, ArgoCD rollout and a reviewer agent; it deployed two services to test and prod in 22 minutes, versus 3 days by hand.
+      \item Consolidated 4 teams' CI pipelines into one set of GitHub Actions templates, since adopted beyond the originating team.
+      \item Shipped a GitHub Pages site that collates Architecture Decision Records, now used by 15+ teams; presented it at the Staff+ engineering forum and paired with another team to standardise the ADR format business-wide.
+      \item Onboarded 18 non-engineering staff to Claude Code across 3 sessions and wrote the setup guide other guilds reused.
     \end{cvitems}
   }
 

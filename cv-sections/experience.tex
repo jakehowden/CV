@@ -20,12 +20,12 @@
   {02/2026--Present} % Date
   {
     \begin{cvitems}
-      \item Architected Partner Portal, a self-service platform for comparison partners: AKS behind Cloudflare, App Gateway WAF and Nginx, with event-driven messaging on Azure Event Hubs, split so test and live traffic never share a hub.
-      \item Proposed porting a legacy portal into Partner Portal rather than building a second one, won over four stakeholders one-to-one before the group decision, then hosted the session that phased the migration against a fixed retirement date.
-      \item Co-built a multi-agent AI orchestrator that turns an architecture diagram into running services, gated on PR merge, ArgoCD rollout and a reviewer agent; it deployed two services to test and prod in 22 minutes, versus 3 days by hand.
-      \item Consolidated 4 teams' CI pipelines into one set of GitHub Actions templates, since adopted beyond the originating team.
-      \item Shipped a GitHub Pages site that collates Architecture Decision Records, now used by 15+ teams; presented it at the Staff+ engineering forum and paired with another team to standardise the ADR format business-wide.
-      \item Onboarded 18 non-engineering staff to Claude Code across 3 sessions and wrote the setup guide other guilds reused.
+      \item Set the architecture for a new client-facing portal on AKS replacing manual account management, validating the Cloudflare, App Gateway WAF and Nginx ingress with the platform team and isolating test from live traffic on Event Hubs.
+      \item Averted a second portal build by making the case for folding a legacy internal portal into the new one, aligning four stakeholders one-to-one before the decision; then led the phased migration planning.
+      \item Cut the time to stand up production services from 3 days to 22 minutes by co-building a multi-agent AI orchestrator that builds and deploys them from an architecture diagram, gated on PR merge, ArgoCD rollout and a reviewer agent.
+      \item Established an Architecture Decision Record practice used by 15+ teams: built a GitHub Pages site collating ADRs across repos, standardised the format with another team, and pitched it to the Staff+ engineering forum.
+      \item Consolidated 4 teams' divergent CI pipelines into reusable GitHub Actions templates, giving services leaving Azure DevOps a ready-made migration path; since adopted on platforms beyond the originating team.
+      \item Drove Claude Code adoption outside engineering, onboarding 18 staff in 3 sessions with a setup guide other guilds reused.
     \end{cvitems}
   }
 

@@ -22,6 +22,7 @@ The PDF is built by GitHub Actions. On every push that changes a `.tex`, `.cls` 
 1. Compiles `resume_cv.tex` with XeLaTeX in the [`texlive/texlive`](https://hub.docker.com/r/texlive/texlive) Docker image
 2. Fails if the build errors or the CV is not exactly 2 pages, and flags overfull boxes as warnings
 3. Commits the rebuilt `resume_cv.pdf` back to the branch if it changed, so pull after pushing
+4. On `main`, rebuilds [jakehowden.com](https://github.com/jakehowden/jakehowden.com), whose /cv page is generated from these `.tex` files (through the `jakehowden-site-deploy` GitHub App: variable `SITE_APP_ID` and secret `SITE_APP_PRIVATE_KEY`; skipped without them)
 
 To build locally instead, you need a TeX distribution with XeLaTeX (e.g. TeX Live):
 

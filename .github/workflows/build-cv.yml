@@ -14,6 +14,9 @@ on:
 permissions:
   contents: write
 
+env:
+  SITE_DEPLOY_TOKEN: ${{ secrets.SITE_DEPLOY_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,3 +49,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Rebuild resume_cv.pdf" -- resume_cv.pdf
           git push
+
+      # Rebuild jakehowden.com, whose /cv page is parsed from these .tex files at this commit.
+      # Needs secret SITE_DEPLOY_TOKEN: fine-grained PAT, jakehowden.com repo only, Actions read & write.
+      - name: Rebuild jakehowden.com
+        if: github.ref == 'refs/heads/main' && env.SITE_DEPLOY_TOKEN != ''
+        env:
+          GH_TOKEN: ${{ env.SITE_DEPLOY_TOKEN }}
+        run: gh workflow run deploy.yml -R jakehowden/jakehowden.com -f cv_ref=${{ github.sha }}
